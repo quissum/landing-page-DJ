@@ -12,9 +12,9 @@ export class Slider {
     this.options = Object.assign(this.defaultOptions(), options)
 
     this.slider = document.querySelector(selector)
-    this.items = this.slider.childNodes
-    this.width = this.items[0].getBoundingClientRect().width
-    this.sliderWidth = this.slider.getBoundingClientRect().width
+    this.items = this.slider.children
+    this.width = this.items[0].clientWidth
+    this.sliderWidth = this.slider.clientWidth
     this.viewCount = Math.round(this.sliderWidth / this.width)
 
     this.activeElement = this.options.active
