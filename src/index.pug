@@ -1,0 +1,158 @@
+doctype html
+include html/data.pug
+
+//------MIXINS---------------------------------
+mixin section(clases)
+  section(class='page__' + clases + ' ' + clases, id=clases)
+    ._container(class=clases + '__container') 
+      block
+
+//------DOCUMENT---------------------------------
+html(lang='en')
+  include html/head.pug
+
+  body 
+  .wrapper 
+    include html/header.pug
+
+    main.page 
+      //------MAIN-BLOCK---------------------------------
+      +section('main-block')
+        .main-block__body
+          h2.main-block__title New Single
+          img.main-block__name(src='@img/main/name.svg', alt='alt') 
+
+          #playerTop.main-block__audio-block.audio-block 
+            .audio-block__play(data-el='play')
+            .audio-block__progressbar(data-el='progressBar')
+              .audio-block__progress(data-el='progress')
+            .audio-block__time-block
+              p.audio-block__current-time(data-el='currentTime') 00:00
+              p.audio-block__all-time(data-el='duration') 00:00
+
+        .main-block__image._ibg 
+          img(src='@img/main/background.jpg', alt='background')
+
+      //-------NEWS-------------------------------------
+      #news.page__news.news
+        .news__container._container 
+          .news__body
+            each obj in news
+              .news__column 
+                article.news__item.news-item
+                  a.news-item__image._ibg(href='#')
+                    img(src=obj.img, alt!=obj.text)
+                  a.news-item__text(href='#')!= obj.text
+
+      //-------ABOUT-----------------------------------
+      +section('about')
+        .about__body 
+          .about__content
+            h2.about__title= about.title
+
+            .about__text-block
+              each text in about.text
+                p.about__text= text
+
+            ul.about__info-list 
+              li.about__info-item Based in: Los Angeles
+              li.about__info-item Founded in 2011
+              li.about__info-item Genre: #DancePop
+              li.about__info-item Label: 333 Recordings
+
+          .about__image-block
+            .about__image-container
+              img.about__image.about__image-top(
+                src='@img/about/brightLights.jpg',
+                alt='brightLights'
+              )
+              img.about__image.about__image-bg(
+                src='@img/about/vehicleBg.png',
+                alt='vehicle'
+              )
+
+      //-------INFO--------------------------------------
+      #info.page__info.info
+        .info__container._container 
+          .info__body
+            .info__content
+              p.info__text= info.text
+              a.info__url(href='PopULove.net') PopULove.net
+
+            .info__iamge 
+              img(src='@img/info/image.jpg', alt='person')
+
+      //-------MUSIC---------------------------------
+      +section('music')
+        .music__body
+          .music__image-block
+            img.music__image(src='@img/music/image.png', alt='image')
+
+          .music__content 
+            h2.music__title Last tracks
+
+            #playerMain.music__audio-block.audio-block 
+              .audio-block__play(data-el='play')
+              .audio-block__progressbar(data-el='progressBar')
+                .audio-block__progress(data-el='progress')
+              .audio-block__time-block
+                p.audio-block__current-time(data-el='currentTime') 00:00
+                p.audio-block__all-time(data-el='duration') 00:00
+
+            ul.music__track-list.track-list
+              each song, i in music
+                - let a = i
+                li.track-list__item
+                  span.track-list__num= '0' + ++a
+                  p.track-list__name(data-target='playerMain', data-el='song')= song
+
+            .music__followme 
+              .music__followme-title Follow me:
+              a.music__link.music__link-spotify(href='#') Spotify
+              a.music__link.music__link-itunes(href='#') iTunes
+
+      //-------MEDIA---------------------------------
+      #media.page__media.media
+        .media__container._container 
+          .media__body
+            .media__image.media__image_1
+              img(src='@img/media/01.jpg', alt='image')
+            .media__image.media__image_2
+              img(src='@img/media/02.jpg', alt='image')
+            .media__image.media__image_3
+              img(src='@img/media/03.jpg', alt='image')
+            .media__image.media__image_4
+              img(src='@img/media/04.jpg', alt='image')
+            .media__image.media__image_5
+              img(src='@img/media/05.jpg', alt='image')
+
+      //-------TOURS---------------------------------
+      #tour.page__tours.tours
+        .tours__container._container 
+          .tours__arrow.tours__arrow-left(
+            data-target='slider',
+            data-el='arrow-left'
+          )
+          .tours__arrow.tours__arrow-right(
+            data-target='slider',
+            data-el='arrow-right'
+          )
+
+          .tours__body
+            #slider.tours__slider
+              each tour in tours
+                .tours__column
+                  article.tours__card
+                    a.tours__image(href='#')
+                      img(src=tour.image, alt='')
+
+                    .tours__content 
+                      .tours__location= tour.location
+                      .tours__text= tour.text
+                      .tours__footer
+                        p.tours__date= tour.date
+                        a.tours__btn(href='#') tickets
+
+    include html/footer.pug
+
+    script(src='js/app.min.js') 

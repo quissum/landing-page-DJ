@@ -1,0 +1,127 @@
+.footer {
+  padding-bottom: 40px;
+
+  @media (max-width: 650px) {
+    padding-bottom: 20px;
+  }
+
+  &__container {
+  }
+
+  &__body {
+    max-width: 533px;
+    margin: 0 auto;
+  }
+
+  &__logo {
+    margin: 0 auto 60px;
+    max-width: 223px;
+
+    @media (max-width: 992px) {
+      margin: 0 auto 30px;
+    }
+    @media (max-width: 650px) {
+      margin: 0 auto 15px;
+      max-width: 150px;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__contact {
+    margin-bottom: 60px;
+
+    @media (max-width: 992px) {
+      margin-bottom: 30px;
+    }
+    @media (max-width: 425px) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: -15px;
+
+    @media (max-width: 650px) {
+      margin: -5px;
+    }
+  }
+
+  &__social-item {
+    padding: 15px;
+    transition: all 0.22s ease;
+
+    @media (max-width: 650px) {
+      padding: 5px;
+      flex: 0 0 33.333%;
+      img {
+        display: block;
+        max-width: 60px;
+        margin: 0 auto;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__copy {
+    margin-top: 100px;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: calc(19 / 13 * 100%);
+    text-align: center;
+    text-transform: uppercase;
+    opacity: 0.5;
+
+    @media (max-width: 992px) {
+      margin-top: 50px;
+    }
+    @media (max-width: 650px) {
+      margin-top: 30px;
+    }
+    @media (max-width: 425px) {
+      margin-top: 20px;
+    }
+  }
+}
+
+.footer-contact {
+  &__block {
+    text-transform: uppercase;
+    display: flex;
+    @media (max-width: 650px) {
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+  }
+  &__title {
+    flex: 0 0 200px;
+    text-align: right;
+    margin-right: 30px;
+
+    @media (max-width: 650px) {
+      flex: 0 0 100%;
+      text-align: center;
+    }
+  }
+  &__value {
+    font-weight: normal;
+
+    @media (max-width: 650px) {
+      flex: 0 0 100%;
+      text-align: center;
+    }
+    @media (max-width: 425px) {
+      font-size: 14px;
+    }
+  }
+}
